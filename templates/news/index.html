@@ -1,0 +1,40 @@
+{% extends 'news/base.html' %}
+{% load static %}
+
+{% block body_block %}
+    <section id="sliderSection">
+        <div class="row">
+            <div class="col-lg-8 col-md-8 col-sm-8">
+                <div class="slick_slider">
+                    {% for new in news %}
+                    <div class="single_iteam"><a href="{% url 'news:single' new.id %}"> <img src="{{ new.img.url }}"  alt=""></a>
+                        <div class="slider_article">
+                            <h2><a class="slider_tittle" href="{% url 'news:single' new.id %}">{{ new.title }}</a></h2>
+                            <p>{{ new.body }}</p>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4">
+                <div class="latest_post">
+                    <h2><span>Latest post</span></h2>
+                    <div class="latest_post_container">
+                        <div id="prev-button"><i class="fa fa-chevron-up"></i></div>
+                        <ul class="latest_postnav">
+                            <li>
+                                <div class="media"><a href="#" class="media-left"> <img alt=""
+                                                                                                             src="{% static 'news/images/post_img1.jpg' %}">
+                                </a>
+                                    <div class="media-body"><a href="#" class="catg_title"> Aliquam
+                                        malesuada diam eget turpis varius 1</a></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

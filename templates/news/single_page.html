@@ -1,0 +1,86 @@
+{% extends 'news/base.html' %}
+{% load static %}
+{% block title %} Single page {% endblock %}
+{% block body_block %}
+        <section id="contentSection">
+            <div class="row">
+                <div class="col-lg-8 col-md-8 col-sm-8">
+                    <div class="left_content">
+                        <div class="single_page">
+                            <ol class="breadcrumb">
+                                <li><a href="{% url 'news:home' %}">Home</a></li>
+                                <li><a href="#">{{ new.categoriy }}</a></li>
+                                <li class="active">Mobile</li>
+                            </ol>
+                            <h1>{{ new.title }}</h1>
+                            <div class="post_commentbox"><a href="#"><i class="fa fa-user"></i>Wpfreeware</a> <span><i
+                                    class="fa fa-calendar"></i>6:49 AM</span> <a href="#"><i class="fa fa-tags"></i>Technology</a>
+                            </div>
+                            <div class="single_page_content"><img class="img-center" src="{{ new.img.url }}" alt="img">
+                                <p>{{ new.content }}</p>
+                                <blockquote>
+                                    {{ new.descriptions }}
+                                </blockquote>
+                                <ul>
+                                    <li>Nullam vitae nibh odio, non scelerisque nibh</li>
+                                    <li>Nullam vitae nibh odio, non scelerisque nibh</li>
+                                    <li>Nullam vitae nibh odio, non scelerisque nibh</li>
+                                    <li>Nullam vitae nibh odio, non scelerisque nibh</li>
+                                    <li>Nullam vitae nibh odio, non scelerisque nibh</li>
+                                    <li>Nullam vitae nibh odio, non scelerisque nibh</li>
+                                </ul>
+                                <h2>This is h2 title</h2>
+                                <h3>This is h3 title</h3>
+                                <h4>This is h4 title</h4>
+                                <h5>This is h5 title</h5>
+                                <h6>This is h6 Title</h6>
+                                <button class="btn default-btn">Default</button>
+                                <button class="btn btn-red">Red Button</button>
+                                <button class="btn btn-yellow">Yellow Button</button>
+                                <button class="btn btn-green">Green Button</button>
+                                <button class="btn btn-black">Black Button</button>
+                                <button class="btn btn-orange">Orange Button</button>
+                                <button class="btn btn-blue">Blue Button</button>
+                                <button class="btn btn-lime">Lime Button</button>
+                                <button class="btn btn-theme">Theme Button</button>
+                            </div>
+                            <div class="social_link">
+                                <ul class="sociallink_nav">
+                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="related_post">
+                                <h2>Related Post <i class="fa fa-thumbs-o-up"></i></h2>
+                                <ul class="spost_nav wow fadeInDown animated">
+                                    {% for new in news %}
+                                    <li>
+                                        <div class="media"><a class="media-left" href="{% url 'news:single' new.id %}"> <img
+                                                src="{{ new.img.url }}" alt="img"> </a>
+                                            <div class="media-body"><a class="catg_title" href="{% url 'news:single' new.id %}">
+                                                {{ new.title }}
+                                            </a></div>
+                                        </div>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <nav class="nav-slit"><a class="prev" href="#"> <span class="icon-wrap"><i class="fa fa-angle-left"></i></span>
+                    <div>
+                        <h3>City Lights</h3>
+                        <img src="{% static 'news/images/post_img1.jpg' %}" alt=""/></div>
+                </a> <a class="next" href="#"> <span class="icon-wrap"><i class="fa fa-angle-right"></i></span>
+                    <div>
+                        <h3>Street Hills</h3>
+                        <img src="{% static 'news/images/post_img1.jpg' %}" alt=""/></div>
+                </a></nav>
+                {% include 'news/base_popular_posts.html' %}
+            </div>
+        </section>
+{% endblock %}
